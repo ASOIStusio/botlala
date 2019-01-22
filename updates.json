@@ -1,0 +1,54 @@
+{
+  "ok": true,
+  "result": [
+    {
+      "update_id": 725916172,
+      "message": {
+        "message_id": 3,
+        "from": {
+          "id": 524698524,
+          "is_bot": false,
+          "first_name": "Саня",
+          "last_name": "Санек",
+          "language_code": "ru"
+        },
+        "chat": {
+          "id": 524698524,
+          "first_name": "Саня",
+          "last_name": "Санек",
+          "type": "private"
+        },
+        "date": 1548146392,
+        "text": "/start",
+        "entities": [
+          {
+            "offset": 0,
+            "length": 6,
+            "type": "bot_command"
+          }
+        ]
+      }
+    },
+    {
+      "update_id": 725916173,
+      "message": {
+        "message_id": 5,
+        "from": {
+          "id": 524698524,
+          "is_bot": false,
+          "first_name": "Саня",
+          "last_name": "Санек",
+          "language_code": "ru"
+        },
+        "chat": {
+          "id": 524698524,
+          "first_name": "Саня",
+          "last_name": "Санек",
+          "type": "private"
+        },
+        "date": 1548148187,
+        "text": "Дароу"
+      }
+    }
+  ]
+}
