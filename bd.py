@@ -1,12 +1,12 @@
+
 import pyodbc as p
 
-sqlserver = "DESKTOP-BKNN6JL"
-bd = ""
+
 
 conn = p.connect (
-    "Driver = {SQL Server Native Client 11.0};"
-    "Server =DESKTOP-BKNN6JL;"
-    "Database =base;"
+    "Driver = {SQL Server Native 11.0};"
+    "Server = DESKTOP-BKNN6JL;"
+    "Database = base;"
     "Trusted_Connection = yes;"
 )
 

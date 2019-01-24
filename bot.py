@@ -3,7 +3,7 @@ import token_id
 import random
 from yo import get_btc
 import json
-import bd
+#import bd
 from time import sleep
 token = token_id.token
 print(token)
