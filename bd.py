@@ -1,18 +1,14 @@
 import pyodbc as p
 
+sqlserver = "DESKTOP-BKNN6JL"
+bd = ""
+
 conn = p.connect (
     "Driver = {SQL Server Native Client 11.0};"
-    "Server = ;"
-    "Database = ;"
+    "Server =DESKTOP-BKNN6JL;"
+    "Database =base;"
     "Trusted_Connection = yes;"
 )
-def read(conn):
-    print("Read")
-    cursor = conn.cursor()
-    cursor.execute("select * from list")
-    for row in cursor:
-        print(f'row = {row}')
-    print()
 
 def create(conn):
     print("Read")
@@ -21,7 +17,7 @@ def create(conn):
                   ('dsad',31)
     )
     conn.commit()
-    read(conn)
+
 
 
 
