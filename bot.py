@@ -119,9 +119,9 @@ def main():
                 # send_message(chat_id, 'https://www.instagram.com/p/BtBk9ibFtBj/media')
             if '/h' in text: #скачивает видео по ссылке 
                 # удаляем слова команды из текста пользователя
-                text = text[2:]
+                text = text[3:]
                 #get_history(text)
-                send_message(chat_id, 'https://www.instagram.com/p/Bvg8w7XhZyP/')
+                send_message(chat_id, text)
             stop()
 
         print('Обновлений нет')
