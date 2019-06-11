@@ -1,11 +1,11 @@
-#!url {ссылка на профиль инсты} – начать следить за этим аккаунтом
+#/url {ссылка на профиль инсты} – начать следить за этим аккаунтом
 
 #INSERT INTO dbo.listt (id,name,track,chat_id,status) VALUES  (6 , 'lena','instlena',1325,0); вставка в бд
-#!del { ссылка на профиль инсты } – не отслеживать этого пользователя
+#/del { ссылка на профиль инсты } – не отслеживать этого пользователя
 #UPDATE listt SET track='' WHERE track='inslexa'; - поле track заменить на пустое значение 
-#!list – список отслеживаемых аккаунтов 
+#/list – список отслеживаемых аккаунтов 
 # select track from listt where name='lena'
-#!vip – плюшки вип аккаунта
+#/vip – плюшки вип аккаунта
 
 import platform
 import token_id
