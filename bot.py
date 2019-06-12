@@ -77,7 +77,7 @@ def strcheck(text): #чистит стоку от пробелов и в text з
     text = text.strip(' ')#удаление пробелов в начале и конце строки
     return text[4:]
 
-def send_message(chat_id, text='Wait a second, please...'):
+def send_message(chat_id,text):
     url = URL + 'sendmessage?chat_id={}&text={}'.format(chat_id, text)
     requests.get(url)
 
@@ -86,7 +86,24 @@ def stop():#-----------------------------------------------------
         print('Задержка между запросами:{} (c.)'.format(sleeep))
         sleep(sleeep)
 
+
+
 def main():
+    # некий аналог БД
+    # таблица где хранится имена юзеров, количество отслеживаемых юзеров, статусы
+    #   Id| Name_user   | kol-vo_Track_user | Chat_id |	Status	|
+    bd_main = [
+        [1,'Саня Санек' ,1                  , '11111' , 'free' ], 
+        [2,'Вася вася'  ,2                  , '22222' , 'vip'  ]
+    ]
+    # хранится ссылки отслеживаемых аккаунтов и ссылки на их последние публикации
+    #  id_account | id_user | track_account | Last_link_post | Last_link_history |
+    bd_accounts = [
+       [1         ,1        ,        'inst1',    'http/post1',    'http/history1'],
+       [2         ,2        ,      'inst2_1',  'http/post2_1',  'http/history2_1'],
+       [3         ,2        ,      'inst2_2',  'http/post2_2',  'http/history2_2'],
+       [4         ,2        ,      'inst2_3',  'http/post2_3',  'http/history2_3']
+    ]
     while True:
         answer = get_message()
         #/url
@@ -98,11 +115,30 @@ def main():
             chat_id = answer['chat_id']
             text = answer['text']
             send_message(chat_id, 'Бот запущен')
-            print('###text',text)
+            print('text',text)
             if text=='/stop':
                 break
             if '/url ' in text:
                 send_message(chat_id, 'Теперь вы будете получать все посты и истории этого профиля')
+                text = strcheck(text)
+                if text=="":
+                    print("Вы ввели команду без ссылки")
+                    break
+                if text.count(' ', 0,) >= 2 and vip == 0: #если нашло 2 пробела, то введен не один аккаунт
+                    print('Вы ввели больше одного аккаунта. Следить за несколкими аккаунтами можно в Vip версии')
+                    break
+                #INSERT INTO dbo.listt (id,name,track,chat_id,status) VALUES  (6 , 'lena','instlena',1325,0); вставка в бд
+                x = text.split()
+                for l in x:
+                    if  track.count(l) == False:
+                        #проверка на то существует ли аккаунт сюда тыкнуть нид
+                        track = track + [l]
+                        print("Записан аккаунт " + l)
+                #следующие 3 строчки нид в функцию
+                print("Вы следите за:") 
+                for item in track:
+                    print(track.index(item)+1,item)
+                break
             if '/del ' in text:
                 print('Выбирете ')
             if '/p' in text:
@@ -122,6 +158,8 @@ def main():
                 text = text[3:]
                 #get_history(text)
                 send_message(chat_id, text)
+            if '/h' in text: #помощь по командам
+                text = text[3:]
             stop()
 
         print('Обновлений нет')
